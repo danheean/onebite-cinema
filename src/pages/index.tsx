@@ -1,14 +1,13 @@
-import localFont from "next/font/local";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import SearchableLayout from "@/components/searchable-layout";
 import MovieItem from "@/components/movie-item";
 import style from "./index.module.css";
-import movies from "@/mock/movies.json";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import fetchMovies from "@/lib/fetch-movies";
 import fetchRandomMovies from "@/lib/fetch-random-movies";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  console.log("인덱스 페이지");
   const [allMovies, recommendedMovies] = await Promise.all([
     fetchMovies(),
     fetchRandomMovies(),
@@ -22,8 +21,8 @@ export const getServerSideProps = async () => {
 export default function Home({
   allMovies,
   recommendedMovies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log(allMovies);
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  // console.log(allMovies);
 
   /*
   useEffect(() => {

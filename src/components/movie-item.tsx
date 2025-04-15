@@ -5,11 +5,9 @@ import style from "./movie-item.module.css";
 export default function MovieItem({
   id,
   title,
-  releaseDate,
   company,
   genres,
   subTitle,
-  description,
   runtime,
   posterImgUrl,
 }: MovieData) {
